@@ -84,6 +84,7 @@ impl ChunkHeader {
     }
 }
 
+#[derive(Debug)]
 pub struct Chunk {
     pub header: ChunkHeader,
     pub metadata: Metadata,

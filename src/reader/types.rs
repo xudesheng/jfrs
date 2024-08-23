@@ -6,7 +6,7 @@
 pub mod builtin {
     use serde::Deserialize;
 
-    #[derive(Deserialize)]
+    #[derive(Deserialize,Debug)]
     #[serde(rename_all = "camelCase")]
     pub struct JdkThread<'a> {
         // In JFR, strings are encoded as 5 types: utf8, char-array, constant-pool, empty, null
@@ -22,7 +22,7 @@ pub mod builtin {
         pub group: Option<ThreadGroup<'a>>,
     }
 
-    #[derive(Deserialize)]
+    #[derive(Deserialize,Debug)]
     #[serde(rename_all = "camelCase")]
     pub struct ThreadGroup<'a> {
         #[serde(borrow, default)]
@@ -30,7 +30,7 @@ pub mod builtin {
         pub name: Option<&'a str>,
     }
 
-    #[derive(Deserialize)]
+    #[derive(Deserialize,Debug)]
     #[serde(rename_all = "camelCase")]
     pub struct StackTrace<'a> {
         #[serde(default)]
@@ -39,7 +39,7 @@ pub mod builtin {
         pub frames: Vec<Option<StackFrame<'a>>>,
     }
 
-    #[derive(Deserialize)]
+    #[derive(Deserialize,Debug)]
     #[serde(rename_all = "camelCase")]
     pub struct StackFrame<'a> {
         #[serde(borrow)]
@@ -52,13 +52,13 @@ pub mod builtin {
         pub frame_type: Option<FrameType<'a>>,
     }
 
-    #[derive(Deserialize)]
+    #[derive(Deserialize,Debug)]
     #[serde(rename_all = "camelCase")]
     pub struct FrameType<'a> {
         pub description: Option<&'a str>,
     }
 
-    #[derive(Deserialize)]
+    #[derive(Deserialize,Debug)]
     #[serde(rename_all = "camelCase")]
     pub struct JdkMethod<'a> {
         #[serde(rename = "type", borrow)]
@@ -73,13 +73,13 @@ pub mod builtin {
         pub hidden: bool,
     }
 
-    #[derive(Deserialize)]
+    #[derive(Deserialize,Debug)]
     #[serde(rename_all = "camelCase")]
     pub struct Symbol<'a> {
         pub string: Option<&'a str>,
     }
 
-    #[derive(Deserialize)]
+    #[derive(Deserialize,Debug)]
     #[serde(rename_all = "camelCase")]
     pub struct Class<'a> {
         #[serde(borrow, default)]
@@ -94,7 +94,7 @@ pub mod builtin {
         pub hidden: bool,
     }
 
-    #[derive(Deserialize)]
+    #[derive(Deserialize,Debug)]
     #[serde(rename_all = "camelCase")]
     pub struct Package<'a> {
         #[serde(borrow)]
@@ -105,7 +105,7 @@ pub mod builtin {
         pub exported: bool,
     }
 
-    #[derive(Deserialize)]
+    #[derive(Deserialize,Debug)]
     #[serde(rename_all = "camelCase")]
     pub struct Module<'a> {
         #[serde(borrow)]
@@ -118,7 +118,7 @@ pub mod builtin {
         pub class_loader: Option<ClassLoader<'a>>,
     }
 
-    #[derive(Deserialize)]
+    #[derive(Deserialize,Debug)]
     #[serde(rename_all = "camelCase")]
     pub struct ClassLoader<'a> {
         #[serde(rename = "type", borrow, default)]
@@ -127,7 +127,7 @@ pub mod builtin {
         pub name: Option<Symbol<'a>>,
     }
 
-    #[derive(Deserialize)]
+    #[derive(Deserialize,Debug)]
     #[serde(rename_all = "camelCase")]
     pub struct ThreadState<'a> {
         pub name: Option<&'a str>,
@@ -138,7 +138,7 @@ pub mod jdk {
     use super::builtin::*;
     use serde::Deserialize;
 
-    #[derive(Deserialize)]
+    #[derive(Deserialize,Debug)]
     #[serde(rename_all = "camelCase")]
     pub struct ExecutionSample<'a> {
         #[serde(borrow)]

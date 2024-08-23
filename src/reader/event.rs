@@ -2,7 +2,7 @@ use crate::reader::type_descriptor::TypeDescriptor;
 use crate::reader::value_descriptor::ValueDescriptor;
 use crate::reader::{Chunk, Error, HeapByteStream, Result};
 use crate::{EVENT_TYPE_CONSTANT_POOL, EVENT_TYPE_METADATA};
-
+#[derive(Debug)]
 pub struct Event<'a> {
     pub byte_offset: u64,
     pub class: &'a TypeDescriptor,
